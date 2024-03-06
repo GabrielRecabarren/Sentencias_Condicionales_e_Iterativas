@@ -45,4 +45,6 @@ Para jugar al Cachipún con el programa `cachipun.py`, utiliza el siguiente coma
 ```
 python cachipun.py [piedra|papel|tijera]
 ```
+### Autor 
+[GabrielRecabarren](https://github.com/GabrielRecabarren)
 
