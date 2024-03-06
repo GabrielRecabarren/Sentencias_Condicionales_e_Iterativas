@@ -1,9 +1,11 @@
+import sys 
+
 def calcular_IMC(peso, altura):
     """
     Calcula el Índice de Masa Corporal (IMC) dado el peso en Kg y la altura en metros.
     """
     imc = peso / (altura ** 2)
-    return round(imc,2)
+    return round(imc, 2)
 
 def clasificar_IMC(imc):
     """
@@ -22,17 +24,26 @@ def clasificar_IMC(imc):
     else:
         return "Obesidad Grado III"
 
-# Entrada de datos
-peso = float(input("Ingrese el peso en Kg: "))
-altura_cm = float(input("Ingrese la altura en Centímetros: "))
-altura=altura_cm/100
+if __name__ == "__main__":
+    # Verificar la cantidad de argumentos
+    if len(sys.argv) != 3:
+        print("Uso: python imc.py [peso_en_kg] [altura_en_cm]")
+        sys.exit(1)
 
-# Cálculo del IMC
-imc = calcular_IMC(peso, altura)
+    # Obtener los argumentos de la línea de comandos
+    try:
+        peso = float(sys.argv[1])
+        altura = float(sys.argv[2]) / 100  # Convertir altura de cm a metros
+    except ValueError:
+        print("Error: Los valores ingresados deben ser números.")
+        sys.exit(1)
 
-# Clasificación del IMC
-clasificacion = clasificar_IMC(imc)
+    # Cálculo del IMC
+    imc = calcular_IMC(peso, altura)
 
-# Resultado
-print("El IMC es:", imc)
-print("Clasificación OMS:", clasificacion)
+    # Clasificación del IMC
+    clasificacion = clasificar_IMC(imc)
+
+    # Resultado
+    print("Su IMC es:", imc)
+    print("La clasificación OMS es:", clasificacion)
